@@ -17,6 +17,7 @@ network:
     - defaults
     - github.blog
     - github.com
+    - awesome-copilot.github.com
 safe-outputs:
   create-pull-request:
     title-prefix: "[mona] "
@@ -33,7 +34,8 @@ Use the web-fetch tool to read both official sources:
 
 - https://github.blog/latest/
 - https://github.blog/changelog/
+- https://awesome-copilot.github.com/workflows/
 
-Select the most useful recent items for developers, keeping summaries short and practical. Attribute every item to the GitHub Blog or GitHub Changelog and include its source URL. Update `site/content/github-info.md` with the curated information, using the edit tool.
+Select the most useful recent items for developers, keeping summaries short and practical. Add useful Awesome Copilot workflows to the sources represented in `site/content/github-info.md`. Attribute every item to the GitHub Blog, GitHub Changelog, or Awesome Copilot workflows and include its source URL. Update `site/content/github-info.md` with the curated information, using the edit tool.
 
 When the content is ready, use the `create-pull-request` safe output to open a pull request for Mona to review. Explain the sources checked and the key updates in the pull request title and body. Do not write directly to the default branch, merge changes, or use terminal, CLI, or sandboxed commands to read repository guidance or reference files.
