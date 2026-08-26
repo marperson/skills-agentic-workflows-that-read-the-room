@@ -1,0 +1,39 @@
+---
+name: update-github-info
+description: Refresh Mona's GitHub information page with the latest official updates.
+on:
+  schedule: daily
+  workflow_dispatch:
+permissions:
+  contents: read
+engine: copilot
+tools:
+  edit:
+  web-fetch:
+  github:
+    toolsets: [repos]
+network:
+  allowed:
+    - defaults
+    - github.blog
+    - github.com
+safe-outputs:
+  create-pull-request:
+    title-prefix: "[mona] "
+    labels: [automation]
+    draft: true
+    max: 1
+---
+
+# Update GitHub Info
+
+Read `notes/mona-notes.md` using the GitHub repository API tools. Read the existing `site/content/github-info.md` the same way so that the update preserves its structure and existing useful content.
+
+Use the web-fetch tool to read both official sources:
+
+- https://github.blog/latest/
+- https://github.blog/changelog/
+
+Select the most useful recent items for developers, keeping summaries short and practical. Attribute every item to the GitHub Blog or GitHub Changelog and include its source URL. Update `site/content/github-info.md` with the curated information, using the edit tool.
+
+When the content is ready, use the `create-pull-request` safe output to open a pull request for Mona to review. Explain the sources checked and the key updates in the pull request title and body. Do not write directly to the default branch, merge changes, or use terminal, CLI, or sandboxed commands to read repository guidance or reference files.
